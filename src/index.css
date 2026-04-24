@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-mist text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-brandBlue text-white;
+  }
+}
+
+@layer utilities {
+  .hairline {
+    @apply border-ink/10;
+  }
+
+  .tracking-tightest {
+    letter-spacing: -0.04em;
+  }
+
+  /* Atmospheric gradient blobs tinted from logo colors */
+  .atmos {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .atmos::before,
+  .atmos::after {
+    content: '';
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .atmos::before {
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(closest-side, rgba(30, 95, 165, 0.45), transparent 70%);
+    top: -120px;
+    right: -120px;
+    animation: blobFloat 22s ease-in-out infinite;
+  }
+  .atmos::after {
+    width: 460px;
+    height: 460px;
+    background: radial-gradient(closest-side, rgba(94, 179, 60, 0.35), transparent 70%);
+    bottom: -140px;
+    left: -100px;
+    animation: blobFloat 26s ease-in-out infinite reverse;
+  }
+
+  @keyframes blobFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, -30px) scale(1.08); }
+  }
+
+  .text-brand-gradient {
+    background: linear-gradient(135deg, #1E5FA5 0%, #2CA8A8 50%, #5EB33C 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}

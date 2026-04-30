@@ -24,7 +24,8 @@ export default function Contact() {
     "Mobile Apps",
     "Web Apps",
     "ERP Products",
-    "AIML Products",
+    "AI Products",
+    "IOT Apps",
     "Digital Marketing",
   ];
 
@@ -148,7 +149,7 @@ export default function Contact() {
                     value={form.message}
                     onChange={handleChange}
                     rows={5}
-                    placeholder="What are you looking to build, and what outcomes would define success for you?"
+                    placeholder="What you’d like to build and the results you aim to achieve."
                     className="w-full bg-transparent border-b border-white/20 py-3 text-lg placeholder:text-white/30 focus:outline-none focus:border-brandGreen transition-colors resize-none"
                   />
                 </div>

@@ -20,9 +20,10 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-6 max-w-sm leading-relaxed text-sm">
-              A lab for AI powered Mobile and Web Apps build and deployed in
-              secured cloud platform for companies who still care how things are
-              made. Mobile, web, ERP, AIML, and the marketing that carries them.
+              An AI-driven lab for building and deploying secure mobile and web
+              applications in the cloud—for companies that value how things are
+              made. We deliver mobile, web, ERP, AI/ML solutions, IOT along with
+              the marketing that brings them to life.
             </p>
             <a
               href="mailto:allytechsoft@gmail.com"

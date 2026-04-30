@@ -21,7 +21,7 @@ const services = [
     tag: 'Operations · Inventory · Finance',
     body:
       'Custom ERP platforms that replace spreadsheets and stitched-together SaaS. Modular, role-based, and quietly powerful where it needs to be.',
-    points: ['Inventory & POS', 'HR & payroll', 'Accounting', 'Custom modules'],
+    points: ['Inventory ERP', 'Accounting', 'Custom modules'],
   },
   {
     num: '04',

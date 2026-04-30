@@ -1,43 +1,56 @@
 const work = [
   {
-    year: '2025',
-    client: 'MedApp',
-    title: 'A Hospital Management Information System app that feels calm.',
-    tags: ['iOS', 'Android', 'Design System'],
-    tone: 'blue',
+    year: "2025",
+    client: "MedApp",
+    title:
+      "AI driven Hospital Management Information System app that feels calm.",
+    tags: ["iOS", "Android", "Web", "Design System"],
+    tone: "blue",
   },
   {
-    year: '2025',
-    client: 'InvoPro',
-    title: 'ERP replacing 14 spreadsheets.',
-    tags: ['ERP', 'Inventory', 'Invoice', 'Accounting'],
-    tone: 'green',
+    year: "2025",
+    client: "InvoPro",
+    title:
+      "ERP Product for professional Invoice solution with Accounting roadmap.",
+    tags: [
+      "ERP",
+      "Inventory",
+      "Invoice",
+      "Accounting",
+      "iOS",
+      "Android",
+      "Web",
+    ],
+    tone: "green",
   },
   {
-    year: '2025',
-    client: 'Ally AI',
-    title: 'An LLM assistant that actually helps.',
-    tags: ['AIML', 'RAG', 'LangChain'],
-    tone: 'teal',
+    year: "2025",
+    client: "Ally AI",
+    title: "An LLM assistant that actually helps.",
+    tags: ["AIML", "RAG", "LangChain"],
+    tone: "teal",
   },
   {
-    year: '2025',
-    client: 'ArrangeMyTrip',
-    title: 'A Tourism and Travel Booking app',
-    tags: ['Web App', 'Realtime', 'Maps'],
-    tone: 'blue',
+    year: "2025",
+    client: "ArrangeMyTrip",
+    title: "A Tourism and Travel Booking app",
+    tags: ["iOS", "Android", "Web App", "Realtime", "Maps"],
+    tone: "blue",
   },
-]
+];
 
 const toneMap = {
-  blue: 'from-brandBlue/15 via-brandBlue/5 to-transparent',
-  green: 'from-brandGreen/20 via-brandGreen/5 to-transparent',
-  teal: 'from-brandTeal/20 via-brandTeal/5 to-transparent',
-}
+  blue: "from-brandBlue/15 via-brandBlue/5 to-transparent",
+  green: "from-brandGreen/20 via-brandGreen/5 to-transparent",
+  teal: "from-brandTeal/20 via-brandTeal/5 to-transparent",
+};
 
 export default function Portfolio() {
   return (
-    <section id="work" className="px-6 md:px-10 py-24 md:py-36 border-t hairline">
+    <section
+      id="work"
+      className="px-6 md:px-10 py-24 md:py-36 border-t hairline"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
           <div className="md:col-span-3">
@@ -50,7 +63,9 @@ export default function Portfolio() {
             <h2 className="font-display font-bold tracking-tightest leading-[1] text-5xl md:text-7xl">
               A handful of
               <br />
-              <span className="text-brand-gradient">things we're proud of.</span>
+              <span className="text-brand-gradient">
+                things we're proud of.
+              </span>
             </h2>
           </div>
         </div>
@@ -67,11 +82,46 @@ export default function Portfolio() {
                 className="absolute inset-0 w-full h-full text-ink/[0.06] group-hover:text-brandBlue/20 transition-colors duration-700"
                 aria-hidden
               >
-                <circle cx="200" cy="150" r="120" stroke="currentColor" strokeWidth="1" fill="none" />
-                <circle cx="200" cy="150" r="80" stroke="currentColor" strokeWidth="1" fill="none" />
-                <circle cx="200" cy="150" r="40" stroke="currentColor" strokeWidth="1" fill="none" />
-                <line x1="80" y1="150" x2="320" y2="150" stroke="currentColor" strokeWidth="1" />
-                <line x1="200" y1="30" x2="200" y2="270" stroke="currentColor" strokeWidth="1" />
+                <circle
+                  cx="200"
+                  cy="150"
+                  r="120"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  fill="none"
+                />
+                <circle
+                  cx="200"
+                  cy="150"
+                  r="80"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  fill="none"
+                />
+                <circle
+                  cx="200"
+                  cy="150"
+                  r="40"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  fill="none"
+                />
+                <line
+                  x1="80"
+                  y1="150"
+                  x2="320"
+                  y2="150"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                />
+                <line
+                  x1="200"
+                  y1="30"
+                  x2="200"
+                  y2="270"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                />
               </svg>
 
               {/* Top meta */}
@@ -105,5 +155,5 @@ export default function Portfolio() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -40,6 +40,7 @@ export default function Footer() {
               "Web Apps",
               "ERP Products",
               "AIML Products",
+              "IOT Apps",
               "Digital Marketing",
             ]}
           />

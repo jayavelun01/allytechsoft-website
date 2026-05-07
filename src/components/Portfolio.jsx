@@ -9,9 +9,9 @@ const work = [
   },
   {
     year: "2025",
-    client: "InvoPro",
+    client: "InvoicePro",
     title:
-      "ERP Product for professional Invoice solution with Accounting roadmap.",
+      "Invoice ERP Product for professional and enterprise solutions with Accounting roadmap.",
     tags: [
       "ERP",
       "Inventory",
@@ -25,15 +25,17 @@ const work = [
   },
   {
     year: "2025",
-    client: "Ally AI",
-    title: "An LLM assistant that actually helps.",
-    tags: ["AIML", "RAG", "LangChain"],
+    client: "FCM.ai",
+    title:
+      "An AI LLM driven Facility Managment enterprise product to support end to end Facility Managment Solutions.",
+    tags: ["AIML", "LLM", "RAG", "LangChain"],
     tone: "teal",
   },
   {
     year: "2025",
     client: "ArrangeMyTrip",
-    title: "A Tourism and Travel Booking app",
+    title:
+      "An AI driven Tours and Travel Booking app with roadmap of Hotel Booking solutions",
     tags: ["iOS", "Android", "Web App", "Realtime", "Maps"],
     tone: "blue",
   },

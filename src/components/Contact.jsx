@@ -1,19 +1,80 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+
+const WEB3FORMS_ACCESS_KEY = "0f96453f-9925-4ffa-ace3-d2a103c668d2";
+
+const INITIAL_FORM = {
+  name: "",
+  email: "",
+  service: "Mobile Apps",
+  message: "",
+};
+
+const RESET_DELAY = 5;
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    service: "Mobile Apps",
-    message: "",
-  });
+  const [sentName, setSentName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [countdown, setCountdown] = useState(RESET_DELAY);
+  const [form, setForm] = useState(INITIAL_FORM);
+  const timerRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (!sent) return;
+    setCountdown(RESET_DELAY);
+    timerRef.current = setInterval(() => {
+      setCountdown((c) => {
+        if (c <= 1) {
+          clearInterval(timerRef.current);
+          setSent(false);
+          setError("");
+          return RESET_DELAY;
+        }
+        return c - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timerRef.current);
+  }, [sent]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: wire up to your backend or a form service (Formspree, Resend, etc.)
-    console.log("Form submitted:", form);
-    setSent(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New Project Enquiry from ${form.name} — ${form.service}`,
+          from_name: form.name,
+          name: form.name,
+          email: form.email,
+          service: form.service,
+          message: form.message,
+          replyto: form.email,
+          autoresponse: `Hi ${form.name},\n\nThank you for reaching out to AllyTechSoft! We have received your enquiry about "${form.service}" and will get back to you within one working day.\n\nHere's a summary of your message:\n---\nService: ${form.service}\nMessage: ${form.message}\n---\n\nBest regards,\nTeam AllyTechSoft\nallytechsoft@gmail.com`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSentName(form.name);
+        setForm(INITIAL_FORM);
+        setSent(true);
+      } else {
+        setError(
+          "Something went wrong. Please try again or email us directly.",
+        );
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -85,17 +146,24 @@ export default function Contact() {
                   ◆ Message received
                 </div>
                 <h3 className="font-display font-semibold text-4xl tracking-tightest">
-                  Thank you, {form.name || "friend"}.
+                  Thank you, {sentName || "friend"}.
                 </h3>
                 <p className="mt-4 text-white/70 leading-relaxed">
-                  We read every enquiry ourselves and reply within one working
-                  day.
+                  We've sent a confirmation to your email. Our team will reply
+                  within one working day.
+                </p>
+                <p className="mt-4 text-white/40 text-sm font-mono">
+                  Returning to the form in {countdown}s…
                 </p>
                 <button
-                  onClick={() => setSent(false)}
-                  className="mt-6 text-sm underline underline-offset-4 hover:text-brandGreen transition-colors"
+                  onClick={() => {
+                    clearInterval(timerRef.current);
+                    setSent(false);
+                    setError("");
+                  }}
+                  className="mt-4 text-sm underline underline-offset-4 hover:text-brandGreen transition-colors"
                 >
-                  Send another
+                  Go back now
                 </button>
               </div>
             ) : (
@@ -154,12 +222,15 @@ export default function Contact() {
                   />
                 </div>
 
+                {error && <p className="text-red-400 text-sm">{error}</p>}
+
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-gradient text-white hover:opacity-90 transition-opacity duration-300 text-sm font-medium"
+                  disabled={loading}
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-gradient text-white hover:opacity-90 transition-opacity duration-300 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send message
-                  <span>→</span>
+                  {loading ? "Sending…" : "Send message"}
+                  {!loading && <span>→</span>}
                 </button>
               </form>
             )}
